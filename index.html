@@ -579,7 +579,7 @@
             smoothedParallax.x += (handParallax.x - smoothedParallax.x) * 3.0 * dt; smoothedParallax.y += (handParallax.y - smoothedParallax.y) * 3.0 * dt;
             const tiltX = smoothedParallax.y * 0.3; const tiltY = smoothedParallax.x * 0.3; const breathingY = Math.sin(time * 0.5) * 0.1;
 
-            if (isLoadingDelay) { loadingDelayTime -= dt; if (loadingDelayTime <= 0) { isLoadingDelay = false; setGuide("Nắm tay <span class='highlight'>✊</span> để biến Cà rốt, hoặc ghép Tim 🫶"); } }
+            if (isLoadingDelay) { loadingDelayTime -= dt; if (loadingDelayTime <= 0) { isLoadingDelay = false; setGuide("Nắm tay <span class='highlight'>✊</span>, hoặc ghép Tim 🫶"); } }
             const h1 = document.getElementById('main-title'); if (h1) { if (appState === 'READING_LETTER') h1.classList.add('hide-title'); else h1.classList.remove('hide-title'); }
 
             switch (appState) {
@@ -589,7 +589,7 @@
                 case 'PEN': targetOpacity = 1.0; targetBloom = 0.0; setGuide("Chụm tay <span class='highlight'>🤌</span> mở thư, hoặc Xòe tay về Cáo"); break;
                 case 'READING_LETTER': targetOpacity = 0.4; targetBloom = 0.0; setGuide("Xòe tay <span class='highlight'>✋</span> để đóng thư"); break;
                 case 'BACK_TO_FOX': targetOpacity = 0.0; targetBloom = 4.0; moveTarget = 'SCATTER'; if (currentOpacity < 0.05) { useImageData(1); mainGroup.rotation.set(0, 0, 0); appState = 'REASSEMBLING_FOX'; } break;
-                case 'REASSEMBLING_FOX': targetOpacity = 1.0; targetBloom = 0.0; moveTarget = 'TARGET'; if (currentOpacity > 0.95) { appState = 'FOX'; updateStatus("Cáo đã về."); isLoadingDelay = true; loadingDelayTime = 2.0; setGuide("Loading..."); interactionLock = Date.now() + 2000; } break;
+                case 'REASSEMBLING_FOX': targetOpacity = 1.0; targetBloom = 0.0; moveTarget = 'TARGET'; if (currentOpacity > 0.95) { appState = 'FOX'; updateStatus("Stitch đã về."); isLoadingDelay = true; loadingDelayTime = 2.0; setGuide("Loading..."); interactionLock = Date.now() + 2000; } break;
                 case 'SLIDESHOW': targetOpacity = 0.0; targetBloom = 0.0; moveTarget = 'SCATTER'; setGuide("Xòe tay <span class='highlight'>✋</span> để quay lại."); break;
                 case 'VIEW_PHOTO': targetOpacity = 0.2; targetBloom = 0.1; setGuide("Xòe tay <span class='highlight'>✋</span> để quay lại."); break;
             }
